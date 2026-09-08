@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+
+    <title>Forgot Password</title>
+    
+</head>
+
+<body>
+    <div class="d-flex flex-column min-vh-100">
+
+        <div class="container py-4 my-auto">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-12">
+                    <div class="card rounded text-black  border border-primary-subtle shadow-sm bg-white">
+
+                        <div class="row g-0">
+
+                            <div class="col-md-6 d-flex align-items-center">
+                                <div class="card-body p-md-5 py-4 mx-md-4 mx-2">
+
+                                    <div class="text-center">
+                                        <h3 class="mb-5 text-decoration-underline link-offset-2 text-primary ">
+                                            Forgot Password
+                                        </h3>
+                                    </div>
+
+                    <form id="formsignin" method="post" action="">
+
+                        <div class="row justify-content-center gy-3">
+
+                            <div class="col-md-12">
+                                <input type="text" class="form-control shadow-none border rounded-0 border-start-0 border-end-0 border-top-0 border-2 border-success" id="email" name="email" placeholder="Email">
+                            </div>
+
+                            <div class="my-2 w-100"></div>
+                            <!-- <a href="#" id="signin" role="button" type="submit" class="btn btn-lg  btn-outline-secondary col-12 mx-auto">Sign In</a> -->
+
+                            <div class="col-md-12">
+                                <button id="forgot" class="btn btn-success shadow-none w-100" type="submit">Submit</button>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="text-center gap-2 pt-2">
+                                    <a href="login" class="text-decoration-none btn btn-sm rounded-2 btn-dark ">  Back 
+                                    </a>
+                                    <!-- |
+                                    <div class="d-inline">
+                                        Don't have an account?
+                                        <a href="register.php" class="text-decoration-none text-white shadow-none rounded-2 btn btn-sm btn-danger ">
+                                            Register
+                                        </a>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+               
+                </div>
+            </div>
+
+
+            <div class="col-md-6 d-none d-md-flex rounded-end">
+                <img src="../static/images/auth.jpg" class="img-fluid" style="object-fit:cover;"
+                    alt="logo">
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<script src="../static/js/jquery.js"></script> 
+<script src="../static/js/bootstrap.js"></script>
+
+    <script>
+        $("#formsignin").on('submit', function (e) {
+
+            if ($("#email").val() == '') {
+
+                alert("Please Fill All Fields");
+                e.preventDefault();
+
+            }
+
+            else {
+
+                if ($("#email").val() !== '') {
+
+                    var check = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    var email = $("#email").val();
+                    if (!check.test(email)) {
+                        alert('Please Enter A Valid Email');
+                        e.preventDefault();
+                    }
+
+                }
+                else {
+
+                    alert("Please Enter Your Email");
+                    e.preventDefault();
+
+                }
+
+
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

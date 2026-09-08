@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+
+    <title>Register</title>
+
+</head>
+
+<body>
+    <div class="d-flex flex-column min-vh-100">
+
+        <div class="container py-4 my-auto">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-12">
+                    <div class="card rounded text-black  border border-primary-subtle shadow-sm bg-white">
+
+                        <div class="row g-0">
+
+                            <div class="col-md-6 d-flex align-items-center">
+                                <div class="card-body p-md-5 py-4 mx-md-4 mx-2">
+
+                                    <div class="text-center">
+                                        <h3 class="mb-5 text-decoration-underline link-offset-2 text-primary ">
+                                            Register
+                                        </h3>
+                                    </div>
+
+                                    <form id="formsignin" method="get" action="">
+
+                                        <div class="row justify-content-center gy-3">
+
+                                            <div class="col-md-12">
+                                                <input type="text"
+                                                    class="form-control shadow-none border rounded-0 border-start-0 border-end-0 border-top-0 border-2 border-success"
+                                                    id="name" name="name" placeholder="Name">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <input type="text"
+                                                    class="form-control shadow-none border rounded-0 border-start-0 border-end-0 border-top-0 border-2 border-success"
+                                                    id="phone" name="phone" placeholder="Phone">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <input type="text"
+                                                    class="form-control shadow-none border rounded-0 border-start-0 border-end-0 border-top-0 border-2 border-success"
+                                                    id="email" name="email" placeholder="Email">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <input type="text"
+                                                    class="form-control shadow-none border rounded-0 border-start-0 border-end-0 border-top-0 border-2 border-success"
+                                                    id="dob" name="dob" placeholder="Date Of Birth">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <input type="password"
+                                                    class="form-control shadow-none border rounded-0 border-start-0 border-end-0 border-top-0 border-2 border-success"
+                                                    id="pswd" name="pswd" placeholder="Password">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <input type="password"
+                                                    class="form-control shadow-none border rounded-0 border-start-0 border-end-0 border-top-0 border-2 border-success"
+                                                    id="confirm_password" name="confirm_password"
+                                                    placeholder="Confirm Password">
+                                            </div>
+ 
+
+                                            <div class="col-md-12">
+                                                <textarea
+                                                    class="form-control shadow-none border rounded-0 border-start-0 border-end-0 border-top-0 border-2 border-success"
+                                                    id="addr" name="addr" placeholder="Address"></textarea>
+                                            </div>
+                                             
+                                            <!-- <a href="#" id="signin" role="button" type="submit" class="btn btn-lg  btn-outline-secondary col-12 mx-auto">Sign In</a> -->
+
+                                            <div class="w-100 my-2"></div>
+
+                                            <div class="col-md-6 text-center">
+                                                <button id="reset"
+                                                    class="btn btn-danger shadow-none w-100"
+                                                    type="reset">Reset
+                                                </button>
+                                            </div> 
+
+                                            <div class="col-md-6 text-center">
+                                                <button id="signup"
+                                                    class="btn btn-success shadow-none w-100"
+                                                    type="submit">Submit
+                                                </button>
+                                            </div>
+                                            
+
+											<div class="col-md-12">
+												
+												<div class="text-center gap-2 pt-2">
+													<a href="/" class="text-decoration-none btn btn-sm rounded-2 btn-dark ">
+														<i class="fa-solid fa-house text-white"></i>
+													</a>
+													|
+													<div class="d-inline">
+														Already have an account?
+														<a href="login" class="text-decoration-none text-white shadow-none rounded-2 btn btn-sm btn-dark ">
+															Login
+														</a>
+													</div>
+												</div>
+											</div>
+
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-6 d-none d-md-flex rounded-end">
+                                <img src="../static/images/auth.jpg" class="img-fluid" style="object-fit:cover;"
+                                    alt="logo">
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="../static/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+
+    <script>
+
+        $(function () {
+
+            $("#dob").datepicker({ maxDate: new Date() });
+
+
+
+            $("#formsignin").on('submit', function (e) {
+
+                debugger;
+
+                if ($("#name").val() == '' && $("#password").val() == '' && $("#email").val() == '' && $("#phone").val() == '' && $("#address").val() == '' && $("#confirm_password").val() == '' && $("#confirm_password").val() == '' && $("#dob").val() == '') {
+
+                    alert("Please Fill All Fields");
+                    e.preventDefault();
+
+                }
+
+                else {
+
+                    if ($("#name").val() !== '') {
+
+                        var check = /^[A-Za-z ]+$/;
+                        var username = $("#name").val();
+                        if (!check.test(username)) {
+                            alert('Please Enter A Valid Name');
+                            e.preventDefault();
+                        }
+
+                    }
+                    else {
+
+                        alert("Please Enter Your Name");
+                        e.preventDefault();
+
+                    }
+
+                    if ($("#phone").val() !== '') {
+
+                        var check = /^(6|7|8|9)[0-9]{9}$/;
+                        var phone = $("#phone").val();
+                        if (!check.test(phone)) {
+                            alert('Please Enter A Valid Phone Number');
+                            e.preventDefault();
+                        }
+
+                    }
+                    else {
+
+                        alert("Please Enter Your Phone Number");
+                        e.preventDefault();
+
+                    }
+
+                    if ($("#email").val() !== '') {
+
+                        var check = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                        var email = $("#email").val();
+                        if (!check.test(email)) {
+                            alert('Please Enter A Valid Email');
+                            e.preventDefault();
+                        }
+
+                    }
+                    else {
+
+                        alert("Please Enter Your Email");
+                        e.preventDefault();
+
+                    }
+
+
+                    if ($("#dob").val() == '') {
+
+                        alert("Please Enter Your Date Of Birth");
+                        e.preventDefault();
+
+                    }
+
+
+
+                    if ($("#address").val() == '') {
+
+                        alert("Please Enter Your Address");
+                        e.preventDefault();
+
+                    }
+
+
+                    if ($("#pswd").val() === $("#confirm_password").val()) {
+
+                        if ($("#pswd").val() == '') {
+
+                            alert("Please Enter Your Password");
+                            e.preventDefault();
+
+                        }
+                        else if ($("#confirm_password").val() == '') {
+
+                            alert("Please Confirm Your Password");
+                            e.preventDefault();
+
+                        }
+
+                    }
+                    else {
+
+                        alert("Your Password Doesn't Match");
+                        e.preventDefault();
+
+                    }
+                    var uname = document.getElementById('name').value;
+                    var pswd = document.getElementById('pswd').value;
+                    var email = document.getElementById('email').value;
+                    var phone = document.getElementById('phone').value;
+                    var addr = document.getElementById('addr').value;
+                    var dob = document.getElementById('dob').value;
+                    $.ajax({
+                        type: 'GET',
+                        url: '/regdata',
+
+                        contentType: 'application/json;charset=UTF-8',
+                        data: {
+                            'uname': uname,
+                            'dob': dob,
+                            'email': email,
+                            'phone': phone,
+                            'pswd': pswd,
+                            'addr': addr
+                        },
+
+                        dataType: "json",
+                        success: function (data) {
+                            alerter(data);
+                            //alert('Data saved Successfully');
+                        },
+                    });
+
+                }
+
+
+            });
+
+            function alerter(data) {
+                debugger;
+                alert(data);
+            }
+
+
+
+        });
+    </script>
+</body>
+
+</html>

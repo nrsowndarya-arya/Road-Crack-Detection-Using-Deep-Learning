@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <title>Form</title>
+
+    <style>
+        .image-upload>input {
+            display: none;
+        }
+    </style> 
+</head>
+
+<body>
+    <div class="d-flex flex-column min-vh-100">
+
+        <nav class="navbar navbar-expand-lg bg-dark border-dark border-bottom">
+            <div class="container-fluid mx-5">
+                <a class="navbar-brand text-light fw-bold fs-5 text-uppercase" href="#">
+					<i class="fa-solid fa-road"></i>
+                    ROAD CRACK DETECTION
+                </a>   
+                <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars text-light"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-decoration-underline link-offset-2 active text-light fw-bold" aria-current="page" href="mainpage">Upload</a>
+                        </li>   
+                        <!--<li class="nav-item">
+                            <a class="nav-link text-light fw-bold" href="predict">Predict</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold" href="login">Logout</a>
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+        </nav>
+ 
+        <div class="container my-4">
+
+            <div class="d-flex mt-5 mb-5">
+                <h3 class="text-success-emphasis link-offset-1 text-decoration-underline flex-grow-1 flex-md-grow-0">
+                    Upload
+                </h3>
+            </div>
+
+
+            <form id="upload-file" method="post" enctype="multipart/form-data" class="">
+
+                <div class="row justify-content-center mb-3 mt-4">
+                    <div class="col-md-7">
+                        <div class="card border-success">
+                            <div class="card-body">
+                                <div class="row justify-content-center gy-2">
+
+                                    <div class="col-md-12">
+                                        <label class="form-label text-success lead fw-bold text-center d-block mb-3">Upload Image :</label>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <div class="image-upload w-100">
+                                            <label for="first_image">
+                                                <img src="./static/images/file.png" class="rounded-circle shadow border border-white" width="100">
+                                            </label>
+                                            <input type="file" class="form-control" id="first_image" name="first_image"
+                                                onchange="previewFile(this);" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <img src="" class="rounded img-thumbnail img-fluid w-100" alt="" id="previewImg" style="display:none;" />
+                                    </div>
+                                    <div class="text-center my-4">
+                                        <input type="button" class="btn btn-success shadow-none" value="Upload Image" onclick="uploadimg();" />
+                                    </div>
+                                </div>
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="result" style="display:none;" class="mt-3">
+
+                    <div class="row justify-content-center">
+
+                        <div class="col-md-4">
+                            <label class="form-control border-0 bg-transparent text-success mb-3 fw-bold fs-5 lead">Grayscale Image :</label>
+                            <img src="" class="rounded img-fluid img-thumbnail" alt=""
+                                id="previewImg2" style="display:none;" />
+                        </div> 
+
+                        <div class="col-md-4">
+                            <label class="form-control border-0 bg-transparent text-success mb-3 fw-bold fs-5 lead">Binarized Image:</label>
+                            <img src="" class="rounded img-fluid img-thumbnail" alt=""
+                                id="previewImg3" style="display:none;" />
+                        </div> 
+
+                        <div class="col-md-4">
+                            <label class="form-control border-0 bg-transparent text-success mb-3 fw-bold fs-5 lead">Threshold Image:</label>
+                            <img src=""  class="rounded img-fluid img-thumbnail" alt=""
+                                id="previewImg4" style="display:none;" />
+                        </div> 
+
+                        <div class="col-md-4">
+                            <label class="form-control border-0 bg-transparent text-success mb-3 fw-bold fs-5 lead">Bounding Box Image:</label>
+                            <img src="" class="rounded img-fluid img-thumbnail" alt="" id="previewImg5" style="display:none;" />
+                        </div>
+
+                    </div>  
+                    <hr>
+                    <div class="row justify-content-center">
+
+                        <div class="col-6 md-mb-0 mb-2 text-center">
+                            <label class="form-control border-0 bg-transparent text-success lead fw-bold fs-5">Type :</label>
+                        </div>
+                        <div class="col-6 md-mb-0 mb-2 text-center">
+                            <label class="form-control border-0 bg-transparent text-success lead fw-bold fs-5" id="diseaseval"></label>
+                        </div>
+
+                    </div>
+                    <!--<div class="row justify-content-center">
+
+                        <div class="col-6 md-mb-0 mb-2 text-center">
+                            <label class="form-control border-0 bg-transparent text-success lead fw-bold fs-5">Stage :</label>
+                        </div>
+                        <div class="col-6 md-mb-0 mb-2 text-center">
+                            <label class="form-control border-0 bg-transparent text-success lead fw-bold fs-5" id="stg"></label>
+                        </div>
+
+                    </div> -->
+
+                    
+                    <div class="row justify-content-center">
+
+                        <div class="col-6 md-mb-0 mb-2 text-center">
+                            <label class="form-control border-0 bg-transparent text-success lead fw-bold fs-5">Accuracy :</label>
+                        </div>
+                        <div class="col-6 md-mb-0 mb-2 text-center">
+                            <label class="form-control border-0 bg-transparent text-success lead fw-bold fs-5" id="accval"></label>
+                        </div>
+
+                    </div> 
+                    <audio id="buzzerSound" src="./static/sounds/buzzer.mp3" preload="auto"></audio>
+                     
+                </div>
+
+            </form> 
+
+        </div>
+
+    </div>
+
+
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.js"></script>	
+    <script>
+
+        function previewFile(input) {
+            // debugger;
+            var file = $("#first_image").get(0).files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function () {
+                    $("#previewImg").attr("src", reader.result);
+                    $("#previewImg").addClass("img-thumbnail");
+                    $("#previewImg").show();
+                    /*$("#previewImg2").attr("src", reader.result);
+                    $("#previewImg2").addClass("img-thumbnail");
+                    $("#previewImg2").show();
+                    $("#previewImg3").attr("src", reader.result);
+                    $("#previewImg3").addClass("img-thumbnail");
+                    $("#previewImg3").show();
+                    $("#previewImg4").attr("src", reader.result);
+                    $("#previewImg4").addClass("img-thumbnail");
+                    $("#previewImg4").show();*/
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function uploadimg() {
+            debugger;
+            var form_data = new FormData($('#upload-file')[0]);
+            $.ajax({
+                type: 'POST',
+                url: '/uploadajax',
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    processor(data)
+                },
+            });
+        }
+
+        function processor(data) {
+            debugger;
+            $("#result").show();
+            var res = data.substring(1, data.length - 1);
+            res = res.split(",");
+            $("#previewImg2").attr("src", "./static/Grayscale/" + res[1]);
+            $("#previewImg2").addClass("img-thumbnail");
+            $("#previewImg2").show();
+            $("#previewImg3").attr("src", "./static/Binary/" + res[1]);
+            $("#previewImg3").addClass("img-thumbnail");
+            $("#previewImg3").show();
+            $("#previewImg4").attr("src", "./static/Threshold/" + res[1]);
+            $("#previewImg4").addClass("img-thumbnail");
+            $("#previewImg4").show();
+            $("#previewImg5").attr("src", "./static/BoundingBox/" + res[3]);
+            $("#previewImg5").addClass("img-thumbnail");
+            $("#previewImg5").show();
+            $("#diseaseval").html(res[0]);
+            $("#accval").html(res[2] + "%");
+            $("#stg").html(res[3]);
+            var precau = res[0];
+            if(precau=='Cyst')
+            {
+                $("#cyst").show();
+                $("#stone").hide();
+                $("#tumor").hide();
+            }
+            if(precau=='Stone')
+            {
+                $("#cyst").hide();
+                $("#stone").show();
+                $("#tumor").hide();
+            }
+            if(precau=='Tumor')
+            {
+                $("#cyst").hide();
+                $("#stone").hide();
+                $("#tumor").show();
+            }
+            if(precau=='Normal')
+            {
+                $("#cyst").hide();
+                $("#stone").hide();
+                $("#tumor").hide();
+            }
+
+            var detected = res[0].toLowerCase();
+            if (detected.includes("crack") || detected.includes("pothole") || detected.includes("manhole")) {
+            var buzzer = document.getElementById("buzzerSound");
+            buzzer.play();
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
